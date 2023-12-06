@@ -16,29 +16,37 @@ int _printf(const char *format, ...)
 
 	while (format && format[i])
 	{
-		switch (format[i])
+		if (format[i] == '%')
 		{
-			case 'c':
-				count += _putchar(va_arg(argList, int));
-				break;
-			case 's':
-				str = va_arg(argList, char*);
-				if (str == NULL)
-					str = "(nil)";
-				while (*str)
-				{
-					count += _putchar(*str);
-					str++;
-				}
-				break;
-			case '%':
-				count += _putchar('%');
-				break;
-			default:
-				count +=  _putchar(format[i]);
-				break;
+			i++;
+			switch (format[i])
+			{
+				case 'c':
+					count += _putchar(va_arg(argList, int));
+					break;
+				case 's':
+					str = va_arg(argList, char*);
+					if (str == NULL)
+						str = "(nil)";
+					while (*str)
+					{
+						count += _putchar(*str);
+						str++;
+					}
+					break;
+				case '%':
+					count += _putchar('%');
+					break;
+				default:
+					count += _putchar(format[i]);
+					count += _putchar(format[i]);
+					break;
+			}
 		}
-
+		else
+		{
+			count += _putchar(format[i]);
+		}
 		i++;
 	}
 	va_end(argList);
