@@ -18,25 +18,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
-			switch (format[i])
-			{
-			case 'c':
-			case 's':
-			case '%':
-				print_c_s_prct(argList, &count, &format[i]);
-				break;
-			case 'd':
-			case 'i':
-				print_d_i(argList, &count);
-				break;
-			case 'b':
-				print_b(argList, &count);
-				break;
-			default:
-				_putchar('%');
-				_putchar(format[i]);
-				count += 2;
-			}
+			count += handle_format_specifier(argList, (char *)&format[i]);
 		}
 		else
 		{

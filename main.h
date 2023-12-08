@@ -10,6 +10,7 @@ char *_itoa(int i, char *buff, int base);
 void print_c_s_prct(va_list argList, int *count, const char *format);
 void print_d_i(va_list argList, int *count);
 void print_b(va_list argList, int *count);
+int handle_format_specifier(va_list argList, char *format);
 
 
 int _putchar(char c);
