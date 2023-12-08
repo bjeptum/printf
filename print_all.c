@@ -8,40 +8,16 @@
 int _printf(const char *format, ...)
 {
 	va_list argList;
-	char *str;
-	unsigned int i = 0;
 	int count = 0;
 
 	va_start(argList, format);
 
-	while (format && format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			switch (format[i])
-			{
-				case 'c':
-				case 's':
-				case '%':
-					print_c_s_prct(argList, &count);
-					break;
-				case 'd':
-				case 'i':
-					print_d_i(argList, &count);
-					break;
-				case 'b':
-					print_b(argList, &count);
-				default:
-					count += _putchar('%');
-					count += _putchar(format[i]);
-					break;
-			}
-		}
-		else
-			count += _putchar(format[i]);
-		i++;
-	}
+	/* Function calls for conversion specifiers */
+	print_c_s_prct(argList, &count, format);
+	print_d_i(argList, &count);
+	print_b(argList, &count);
+
 	va_end(argList);
+
 	return (count);
 }
