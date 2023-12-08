@@ -3,9 +3,10 @@
  * print_d_i - implements d and i conversion
  * @argList: list of arguments
  * @count: count of characters to be printed
+ * @format: character string
  * Return: Characters to be printed
  */
-void print_d_i(va_list argList, int *count)
+void print_d_i(va_list argList, int *count, const char *format)
 {
 	int num = va_arg(argList, int);
 	char buffer[12];
@@ -22,11 +23,10 @@ void print_d_i(va_list argList, int *count)
 }
 /**
  * print_b - implements unsigned int conversion
- * @argList: list of arguments
  * @count: coutn of characters to eb printed
  * Return: Characters to be printed
  */
-void print_b(va_list argList, int *count)
+void print_b(int *count)
 {
 	unsigned int num = va_arg(argList, unsigned int);
 	char buffer[32];
