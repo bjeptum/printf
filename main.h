@@ -6,10 +6,14 @@
 
 
 int _printf(const char *format, ...);
-char *_itoa(int i, char *strout, int base);
+char *_itoa(int i, char *buff, int base);
+void print_c_s_prct(va_list argList, int *count);
+void print_d_i(va_list argList, int *count);
+void print_b(va_list argList, int *count);
 
 
 int _putchar(char c);
+char *_strrev(char *str);
 
 #endif /* MAIN_H */
 

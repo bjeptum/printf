@@ -22,31 +22,24 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					count += _putchar(va_arg(argList, int));
-					break;
 				case 's':
-					str = va_arg(argList, char*);
-					if (str == NULL)
-						str = "(nil)";
-					while (*str)
-					{
-						count += _putchar(*str);
-						str++;
-					}
-					break;
 				case '%':
-					count += _putchar('%');
+					print_c_s_prct(argList, &count);
 					break;
+				case 'd':
+				case 'i':
+					print_d_i(argList, &count);
+					break;
+				case 'b':
+					print_b(argList, &count);
 				default:
-					count += _putchar(format[i]);
+					count += _putchar('%');
 					count += _putchar(format[i]);
 					break;
 			}
 		}
 		else
-		{
 			count += _putchar(format[i]);
-		}
 		i++;
 	}
 	va_end(argList);
