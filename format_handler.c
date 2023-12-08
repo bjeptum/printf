@@ -16,18 +16,22 @@ int handle_format_specifier(va_list argList, char *format)
 		case 's':
 		case '%':
 			print_c_s_prct(argList, &count, &format[i]);
+			i++;
 			break;
 		case 'd':
 		case 'i':
 			print_d_i(argList, &count);
+			i++;
 			break;
 		case 'b':
 			print_b(argList, &count);
+			i++;
 			break;
 		default:
 			_putchar('%');
 			_putchar(format[i]);
 			count += 2;
+			i++;
 	}
-	return (0);
+	return (count);
 }
